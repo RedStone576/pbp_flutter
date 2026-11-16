@@ -1,17 +1,19 @@
-# pbp_flutter
+# Portofolio with Flutter
 
-A new Flutter project.
+> [!IMPORTANT]
+> Repository for the mandatory course "Platform-Based Programming (CSGE602022)"  
+> Faculty of Computer Science, Universitas Indonesia.
+> 
+> Ilham Firmansyah ([@RedStone576](https://github.com/redstone576)) - 2506532643, 06.00.12.01 - PBP E
 
-## Getting Started
+### NOTES
+https://csui.cesilia.dev/pbp/
 
-This project is a starting point for a Flutter application.
+## Deployment
+- https://ilham.csui.me (web build)
 
-A few resources to get you started if this is your first Flutter project:
+## Essay
+- Tugas 7: [./essay/tugas7.md](https://github.com/RedStone576/pbp_flutter/blob/master/essay/tugas7.md)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Credits
+- PBP Fasilkom Ganjil 26/27
