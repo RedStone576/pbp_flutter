@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter/widgets/left_drawer.dart';
+import 'package:pbp_flutter/project_form.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -143,6 +144,16 @@ class ItemCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!"),
               ),
             );
+
+          // Navigate ke halaman yang sesuai
+          if (item.name == "Tambah Proyek") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProjectFormPage(),
+              ),
+            );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
