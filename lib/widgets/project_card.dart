@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/screens/project_form.dart';
+import 'package:pbp_flutter/screens/education_form.dart';
 
 class ItemHomepage {
   final String name;
@@ -38,6 +38,13 @@ class ItemCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProjectFormPage()),
+            );
+          } else if (item.name == "Tambah Edukasi") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
             );
           }
         },

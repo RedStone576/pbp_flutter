@@ -14,6 +14,7 @@ https://csui.cesilia.dev/pbp/
 
 ## Essay
 - Tugas 7: [./essay/tugas7.md](https://github.com/RedStone576/pbp_flutter/blob/master/essay/tugas7.md)
+- Tugas 8: [./essay/tugas8.md](https://github.com/RedStone576/pbp_flutter/blob/master/essay/tugas8.md)
 
 ## Credits
 - PBP Fasilkom Ganjil 26/27
