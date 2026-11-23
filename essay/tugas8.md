@@ -11,20 +11,20 @@ Forms, drawers, and navigator stacks. Welcome to mobile dev???
 
 ## Checklist
 
-Halaman Formulir Baru
+- [X] Halaman Formulir Baru
     - [X] Membuat halaman formulir baru dalam berkas Dart tersendiri di lib/screens/. Gunakan StatefulWidget, Form, dan GlobalKey<FormState>.
     - [X] Menyediakan minimal tiga input yang sesuai dengan model bagian portofolio yang dipilih. Gunakan widget input yang sesuai dengan tipe datanya. Misalnya, gunakan TextFormField untuk nama institusi atau showDatePicker() untuk tanggal jika model memiliki atribut tanggal.
     - [X] Memvalidasi setiap input sesuai aturan model. Tolak isian wajib yang kosong atau hanya berisi spasi. Periksa batas panjang, format URL, atau urutan tanggal jika aturan tersebut berlaku untuk input yang digunakan.
     - [X] Menggunakan Scaffold dan AppBar dengan tema yang konsisten dengan halaman utama. Susun formulir agar semua input dan tombol Simpan tetap dapat dijangkau pada layar sempit atau saat papan ketik tampil.
-Navigasi dari Halaman Utama dan Drawer
+- [X] Navigasi dari Halaman Utama dan Drawer
     - [X] Menambahkan kartu aksi di halaman utama untuk membuka formulir baru menggunakan Navigator.push(). Setelah formulir dibuka dari kartu aksi, pengguna dapat kembali dengan tombol kembali bawaan perangkat jika tersedia.
     - [X] Menambahkan opsi untuk membuka formulir baru pada drawer dari Tutorial 09. Pertahankan opsi Home dan Add Project, lalu gunakan drawer yang sama di halaman formulir baru.
     - [X] Memastikan opsi baru di drawer membuka formulir yang sesuai dan opsi Home dari halaman formulir membawa pengguna ke halaman utama. Gunakan opsi Home untuk menguji alur kembali saat menjalankan aplikasi di Chrome.
-Validasi dan Dialog Ringkasan
+- [X] Validasi dan Dialog Ringkasan
     - [X] Menyediakan tombol Simpan yang memanggil FormState.validate(). Jika ada input yang tidak valid, tampilkan pesan kesalahan pada kolom terkait.
     - [X] Menampilkan semua isian dalam AlertDialog melalui showDialog() hanya setelah seluruh input lolos validasi.
     - [X] Menyediakan tombol Tutup atau OK untuk menutup dialog dan kembali ke formulir.
-Kualitas Kode dan Repositori
+- [X] Kualitas Kode dan Repositori
     - [X] Menguji akses formulir dari kartu dan drawer, penyimpanan dengan input valid dan tidak valid, serta navigasi kembali ke halaman utama.
     - [X] Menjalankan flutter analyze dari direktori utama proyek dan menyelesaikan temuan analisis.
 
