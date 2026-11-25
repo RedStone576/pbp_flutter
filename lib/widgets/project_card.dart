@@ -4,6 +4,7 @@ import 'package:pbp_flutter/screens/project_list_screen.dart';
 import 'package:pbp_flutter/services/auth_state.dart';
 import 'package:pbp_flutter/widgets/auth_guard.dart';
 import 'package:provider/provider.dart';
+import 'package:pbp_flutter/screens/education_form.dart';
 
 class ItemHomepage {
   final String name;
@@ -66,6 +67,13 @@ class ItemCard extends StatelessWidget {
                   const SnackBar(content: Text('Anda belum login.')),
                 );
             }
+          } else if (item.name == "Tambah Edukasi") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
+            );
           }
         },
         child: Container(

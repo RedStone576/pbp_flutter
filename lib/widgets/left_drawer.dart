@@ -6,6 +6,7 @@ import 'package:pbp_flutter/screens/project_list_screen.dart';
 import 'package:pbp_flutter/services/auth_state.dart';
 import 'package:pbp_flutter/widgets/auth_guard.dart';
 import 'package:provider/provider.dart';
+import 'package:pbp_flutter/screens/education_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -103,6 +104,18 @@ class LeftDrawer extends StatelessWidget {
                 );
               },
             ),
+          ListTile(
+            leading: const Icon(Icons.school_outlined),
+            title: const Text('Add Education'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EducationFormPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
