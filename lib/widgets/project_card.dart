@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/screens/project_form.dart';
 import 'package:pbp_flutter/screens/project_list_screen.dart';
+import 'package:pbp_flutter/services/auth_state.dart';
+import 'package:pbp_flutter/widgets/auth_guard.dart';
+import 'package:provider/provider.dart';
 
 class ItemHomepage {
   final String name;
@@ -24,18 +26,16 @@ class ItemCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
-        onTap: () {
-          // Menampilkan SnackBar dengan pesan interaktif.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!"),
-              ),
-            );
-
+        onTap: () async {
           // Navigate ke halaman yang sesuai
           if (item.name == "Lihat Proyek") {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text("Kamu telah menekan tombol ${item.name}!"),
+                ),
+              );
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -43,10 +43,29 @@ class ItemCard extends StatelessWidget {
               ),
             );
           } else if (item.name == "Tambah Proyek") {
+            final allowed = await ensureLoggedIn(context);
+            if (!allowed || !context.mounted) return;
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProjectFormPage()),
             );
+          } else if (item.name == "Logout") {
+            final authState = context.read<AuthState>();
+            if (authState.isLoggedIn) {
+              await authState.logout();
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  const SnackBar(content: Text('Berhasil logout!')),
+                );
+            } else {
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  const SnackBar(content: Text('Anda belum login.')),
+                );
+            }
           }
         },
         child: Container(

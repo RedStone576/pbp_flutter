@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/services/api_client.dart';
+import 'package:pbp_flutter/services/auth_state.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [Provider.value(value: apiClient)],
+      providers: [
+        Provider.value(value: apiClient),
+        ChangeNotifierProvider(create: (_) => AuthState(apiClient)),
+      ],
       child: MaterialApp(
         title: 'MyPortfolio',
         theme: ThemeData(
