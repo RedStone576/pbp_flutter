@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/screens/project_form.dart';
+import 'package:pbp_flutter/screens/project_list_screen.dart';
 
 class ItemHomepage {
   final String name;
@@ -34,7 +35,14 @@ class ItemCard extends StatelessWidget {
             );
 
           // Navigate ke halaman yang sesuai
-          if (item.name == "Tambah Proyek") {
+          if (item.name == "Lihat Proyek") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProjectListScreen(),
+              ),
+            );
+          } else if (item.name == "Tambah Proyek") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProjectFormPage()),

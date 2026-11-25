@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/screens/project_form.dart';
+import 'package:pbp_flutter/screens/project_list_screen.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -39,6 +40,19 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => MyHomePage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.folder_outlined),
+            title: const Text('Projects'),
+            // Navigasi ke daftar proyek
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectListScreen(),
+                ),
               );
             },
           ),
