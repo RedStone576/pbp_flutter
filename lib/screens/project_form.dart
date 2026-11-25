@@ -50,9 +50,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
     if (token == null) {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(
-          const SnackBar(content: Text('Anda belum login.')),
-        );
+        ..showSnackBar(const SnackBar(content: Text('Anda belum login.')));
       return;
     }
 
@@ -70,9 +68,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
 
     try {
       final created = await context.read<ApiClient>().createProject(
-            newProject,
-            token: token,
-          );
+        newProject,
+        token: token,
+      );
 
       if (!mounted) return;
 
@@ -141,9 +139,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(content: Text('Terjadi kesalahan: $e')),
-        );
+        ..showSnackBar(SnackBar(content: Text('Terjadi kesalahan: $e')));
     } finally {
       if (mounted) {
         setState(() {
