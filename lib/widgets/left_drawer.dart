@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pbp_flutter/screens/login_screen.dart';
 import 'package:pbp_flutter/screens/menu.dart';
 import 'package:pbp_flutter/screens/project_form.dart';
+import 'package:pbp_flutter/screens/project_list_screen.dart';
+import 'package:pbp_flutter/services/auth_state.dart';
+import 'package:pbp_flutter/widgets/auth_guard.dart';
+import 'package:provider/provider.dart';
 import 'package:pbp_flutter/screens/education_form.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -8,6 +13,8 @@ class LeftDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoggedIn = context.watch<AuthState>().isLoggedIn;
+
     return Drawer(
       child: ListView(
         children: [
@@ -35,7 +42,6 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
-            // Navigasi ke halaman utama portofolio
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -44,10 +50,23 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.folder_outlined),
+            title: const Text('Projects'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectListScreen(),
+                ),
+              );
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.add_circle_outline),
             title: const Text('Add Project'),
-            // Navigasi ke halaman tambah proyek
-            onTap: () {
+            onTap: () async {
+              final allowed = await ensureLoggedIn(context);
+              if (!allowed || !context.mounted) return;
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -56,6 +75,35 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
+          if (!isLoggedIn)
+            ListTile(
+              leading: const Icon(Icons.login),
+              title: const Text('Login'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                );
+              },
+            )
+          else
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
+              onTap: () async {
+                await context.read<AuthState>().logout();
+                if (!context.mounted) return;
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    const SnackBar(content: Text('Berhasil logout!')),
+                  );
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => MyHomePage()),
+                );
+              },
+            ),
           ListTile(
             leading: const Icon(Icons.school_outlined),
             title: const Text('Add Education'),
